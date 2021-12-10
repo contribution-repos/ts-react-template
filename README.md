@@ -114,7 +114,7 @@ module.exports = {
   copyFile: [ // 打包时需要copy的文件
     './config.js',
   ],
-  html: [ // 打包入门
+  html: [ // 打包入口
     {
       name: 'Page1',
       title: 'Page1',
@@ -134,47 +134,47 @@ module.exports = {
 
 - `start / dev`
 
-启动开发服务器
+  启动开发服务器
 
 - `build:clear`
 
-打生产包
+  打生产包
 
 - `build`
 
-1. 打生产包
-2. 自动更新测试版本号
-3. 压缩文件 到 `release/vx.x.x.x.zip`
-4. 为输出目录打开一个静态服务器
+  1. 打生产包
+  2. 自动更新测试版本号
+  3. 压缩文件 到 `release/vx.x.x.x.zip`
+  4. 为输出目录打开一个静态服务器
 
 - `preview`
 
-为生产输出目录打开一个静态服务器
+  为生产输出目录打开一个静态服务器
 
 - `analyzer`
 
-分析生产输出目录文件大小
+  分析生产输出目录文件大小
 
 - `zip`
 
-压缩生产输出目录
+  压缩生产输出目录
 
 - `eslint`
 
-开始js文件格式检测
+  开始js文件格式检测
 
 - `stylelint`
 
-开始样式文件格式检测
+  开始样式文件格式检测
 
 - `lint-staged`
 
-对staged中的文件执行`eslint`和`stylelint`。
+  对staged中的文件执行`eslint`和`stylelint`。
 
 - `commitlint`
 
-检测commit信息（一般不用手动执行）
+  检测commit信息（一般不用手动执行）
 
 - `prepare`
 
-`prepare`钩子，自动配置husky
+  `prepare`钩子，自动配置husky
