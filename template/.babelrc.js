@@ -1,3 +1,4 @@
+const path = require('path');
 const {
   generateScopedNameFactory,
 } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
@@ -31,6 +32,14 @@ module.exports = {
         webpackHotModuleReloading: true,
         autoResolveMultipleImports: true,
         handleMissingStyleName: 'warn',
+      },
+    ],
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        alias: {
+          '@': path.resolve(__dirname, './src/'),
+        },
       },
     ],
   ],
