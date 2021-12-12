@@ -13,7 +13,9 @@ module.exports = {
         corejs: { version: 3, proposals: true },
       },
     ],
-    '@babel/react',
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }]
   ],
   plugins: [
     ['@babel/plugin-syntax-dynamic-import'],

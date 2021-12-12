@@ -1,4 +1,3 @@
-import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './global-css/main.scss';
 import { ConnectedRouter } from 'connected-react-router';

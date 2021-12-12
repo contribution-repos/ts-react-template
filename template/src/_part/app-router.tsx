@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Demo from '@/components/demo';
 

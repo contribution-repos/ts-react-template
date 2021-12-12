@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 import checked from '../images/checked@2x.png';
 import './demo.scss';
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const Demo: React.FC<IProps> = () => {
-  const [count, setCount] = React.useState(1);
+  const [count, setCount] = useState(1);
 
   const onClick = () => {
     setCount(Math.random());

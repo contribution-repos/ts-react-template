@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCount } from '../model/action';
 import { IRootState } from '../model/store';
