@@ -29,6 +29,7 @@ typings/
 .yarn-integrity
 
 dist/
+release/
 .idea/
 yarn.lock
 .vscode/
