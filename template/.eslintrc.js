@@ -22,10 +22,12 @@ module.exports = {
     tsconfigRootDir: './',
   },
   rules: {
+    "no-shadow": "off",
     'no-use-before-define': 'off',
     'import/no-unresolved': 'error',
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/no-var-requires': 0,
+    "@typescript-eslint/no-shadow": ["error"],
     'jsx-a11y/control-has-associated-label': 0,
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
