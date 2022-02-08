@@ -9,6 +9,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const {
   getLocalIdent,
   // eslint-disable-next-line import/no-unresolved
@@ -31,7 +32,7 @@ const parseScssModule = (options = {}) => {
 
   if (modules) {
     Object.assign(cssLoaderOptions, {
-      importLoaders: 1,
+      importLoaders: 2,
       modules: {
         namedExport: true,
         localIdentContext: path.resolve(__dirname, 'src'),
@@ -89,6 +90,7 @@ const getPlugins = () => [
       templateParameters: {
         version: pkg.version,
       },
+      hash: true,
     }),
   ),
   new webpack.DefinePlugin({
@@ -100,6 +102,11 @@ const getPlugins = () => [
     patterns: userConfig.copyFile,
   }),
   isDevMode && new ReactRefreshPlugin(),
+  new ForkTsCheckerWebpackPlugin({
+    eslint: {
+      files: './src/**/*.{ts,tsx}'
+    }
+  }),
   !isDevMode
     && new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:5].css',
@@ -149,6 +156,7 @@ const getModulesRules = () => [
         loader: 'ts-loader',
         options: {
           happyPackMode: true,
+          transpileOnly: true
         },
       },
     ],
