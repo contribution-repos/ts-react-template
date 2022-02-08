@@ -64,6 +64,7 @@ module.exports = {
     'max-len': ['error', 120],
     'object-curly-newline': 0,
     'react-hooks/exhaustive-deps': 0,
+    "@typescript-eslint/no-explicit-any": ["off"]
   },
   extends: [
     'airbnb',

@@ -19,7 +19,7 @@ const Demo: React.FC<IProps> = () => {
       Hello React!
       <img src={checked} alt="" />
       <div className="globals">{count}</div>
-      <div styleName="stylename">stylenam2e</div>
+      <div styleName="stylename">styleName</div>
       <button type="button" onClick={onClick}>click me!</button>
     </div>
   );
