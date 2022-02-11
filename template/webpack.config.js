@@ -1,5 +1,6 @@
+require('dotenv').config();
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin').default;
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,14 +15,23 @@ const {
   getLocalIdent,
   // eslint-disable-next-line import/no-unresolved
 } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
-
+const getEntryList = require('./scripts/entry');
 const postcssNormalize = require('postcss-normalize');
 
 const pkg = require('./package.json');
 const userConfig = require('./esboot.config');
+const entryList = getEntryList();
 
 const smp = new SpeedMeasurePlugin();
 const isDevMode = process.env.NODE_ENV === 'development';
+
+console.log(
+  entryList.map((item) => ({
+    ...item,
+    url: `http://0.0.0.0:${userConfig.serverPort}/${item.name}.html`,
+  })),
+  '<-- entryList',
+);
 
 const parseScssModule = (options = {}) => {
   const { modules } = options;
@@ -73,14 +83,15 @@ const parseScssModule = (options = {}) => {
   ];
 };
 
-const getEntry = () => userConfig.html.reduce((prev, curr) => {
+const createEntry = () =>
+entryList.reduce((prev, curr) => {
   prev[curr.name] = curr.entry;
   return prev;
 }, {});
 
 const getPlugins = () => [
   // !isDevMode && new BundleAnalyzerPlugin(),
-  ...userConfig.html.map(
+  ...entryList.map(
     (i) => new HtmlWebpackPlugin({
       inject: true,
       chunks: [i.name],
@@ -192,7 +203,7 @@ const baseCfg = {
   performance: {
     hints: false,
   },
-  entry: getEntry(),
+  entry: createEntry(),
   resolve: {
     extensions: ['.ts', '.tsx', '.jsx', '.js'],
     alias: {

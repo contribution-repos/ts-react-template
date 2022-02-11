@@ -31,6 +31,10 @@ typings/
 dist/
 release/
 .idea/
-yarn.lock
 .vscode/
 stats.json
+.env
+
+# umi
+.umi
+.mfsu-*
