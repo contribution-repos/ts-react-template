@@ -63,7 +63,7 @@ const parseScssModule = (options = {}) => {
       options: {
         sourceMap: isDevMode,
         postcssOptions: {
-          plugins: () => [
+          plugins: [
             require('postcss-flexbugs-fixes'),
             require('postcss-preset-env')({
               autoprefixer: {
