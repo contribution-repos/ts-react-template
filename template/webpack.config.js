@@ -20,6 +20,7 @@ const postcssNormalize = require('postcss-normalize');
 
 const pkg = require('./package.json');
 const userConfig = require('./esboot.config');
+const ip = require('./scripts/ip');
 const entryList = getEntryList();
 
 const smp = new SpeedMeasurePlugin();
@@ -28,7 +29,7 @@ const isDevMode = process.env.NODE_ENV === 'development';
 console.log(
   entryList.map((item) => ({
     ...item,
-    url: `http://0.0.0.0:${userConfig.serverPort}/${item.name}.html`,
+    url: `http://${ip}:${userConfig.serverPort}/${item.name}.html`,
   })),
   '<-- entryList',
 );
@@ -113,11 +114,11 @@ const getPlugins = () => [
     patterns: userConfig.copyFile,
   }),
   isDevMode && new ReactRefreshPlugin(),
-  new ForkTsCheckerWebpackPlugin({
-    eslint: {
-      files: './src/**/*.{ts,tsx}'
-    }
-  }),
+  // new ForkTsCheckerWebpackPlugin({
+  //   eslint: {
+  //     files: './src/**/*.{ts,tsx}'
+  //   }
+  // }),
   !isDevMode
     && new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:5].css',

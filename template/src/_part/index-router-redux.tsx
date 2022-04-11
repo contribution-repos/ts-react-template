@@ -1,18 +1,20 @@
 import * as ReactDOM from 'react-dom';
 import './global-css/main.scss';
-import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import { HashRouter as Router } from 'react-router-dom';
-import { store, history } from './model/store';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { store } from '@/model/store';
+import Demo from '@/components/demo';
 import App from './app';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Router>
-        <App />
-      </Router>
-    </ConnectedRouter>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="demo" element={<Demo />} />
+        </Route>
+      </Routes>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

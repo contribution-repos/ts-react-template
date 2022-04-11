@@ -1,10 +1,14 @@
-import { Route, Link } from 'react-router-dom';
-import Demo from '@/components/demo';
+import { Outlet, Link } from 'react-router-dom';
 
 const App: React.FC = () => (
   <div>
-    <Route path="/" exact render={() => <Link to="/demo">to demo</Link>} />
-    <Route path="/demo" component={Demo} />
+    <div>
+      Hello, ESBoot!
+    </div>
+
+    <Link to="demo">To demo</Link>
+
+    <Outlet />
   </div>
 );
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/helpers/react-redux';
 import { incrementByAmount } from '@/model/app';
 
@@ -20,6 +21,7 @@ const Demo: React.FC<IProps> = () => {
   return (
     <div styleName="hello">
       Hello React!
+      <Link to="/">回到首页</Link>
       <img src={checked} alt="" />
       <div className="globals">{count}</div>
       <div styleName="stylename">styleName</div>

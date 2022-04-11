@@ -1,17 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { Reducer } from 'redux';
-<% if(redux && router) { -%>import { connectRouter, routerMiddleware } from 'connected-react-router';<% } %>
-<% if(redux && router) { -%>import { createHashHistory } from 'history';<% } %>
 import appReducer from './app';
-
-<% if(redux && router) { -%>export const history = createHashHistory();<% } %>
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
-    <% if(redux && router) { -%>router: connectRouter(history) as Reducer,<% } %>
   },
-  <% if(redux && router) { -%>middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware(history)),<% } %>
+  <% if(redux && router) { -%>middleware: (getDefaultMiddleware) => getDefaultMiddleware(),<% } %>
   devTools: process.env.NODE_ENV !== 'production',
 });
 
